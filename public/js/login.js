@@ -43,6 +43,25 @@ const loginFormHandler = async (event) => {
       }
     }
   };
+
+  function showPassword() {
+    var x = document.getElementById("password-signup");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+
+  function showLoginPassword() {
+    var x = document.getElementById("password-login");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+  
   
   document
     .querySelector('.login-form')
