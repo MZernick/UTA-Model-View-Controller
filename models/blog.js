@@ -31,13 +31,6 @@ Blog.init(
               key: 'id',
             },
         },
-        // comment_id: {
-        //     type: DataTypes.STRING,
-        //     references: {
-        //         model: 'comment',
-        //         key: 'id',
-        //       },
-        // },
     },
     {
         sequelize,
