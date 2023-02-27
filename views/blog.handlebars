@@ -2,7 +2,8 @@
   <h2>{{post_title}}</h2>
   <p>{{{get_emoji}}}</p>
   <p>{{content}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>Created by {{user.username}} on {{format_date date_created}}</p>
+  <button type="button" class="btn btn-danger">Delete</button>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">Leave a Comment</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

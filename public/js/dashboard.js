@@ -1,4 +1,4 @@
-const newFormHandler = async (event) => {
+const newBlogHandler = async (event) => {
     event.preventDefault();
   
     const post_title = document.querySelector('#blog-title').value.trim();
@@ -23,8 +23,8 @@ const newFormHandler = async (event) => {
   };
   
   const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
+    if (event.target.hasAttribute('btn-danger')) {
+      const id = event.target.getAttribute('btn-danger');
   
       const response = await fetch(`/api/blogs/${id}`, {
         method: 'DELETE',
@@ -46,3 +46,42 @@ const newFormHandler = async (event) => {
     .querySelector('.blog-list')
     .addEventListener('click', delButtonHandler);
   
+    const newCommentHandler = async (event) => {
+      event.preventDefault();
+    
+      const post_title = document.querySelector('#comment-title').value.trim();
+      const name = document.querySelector('#name').value.trim();
+      const content = document.querySelector('#comment-desc').value.trim();
+    
+      if (post_title && name && content) {
+        const response = await fetch(`/api/comments`, {
+          method: 'POST',
+          body: JSON.stringify({ post_title, name, content }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (response.ok) {
+          document.location.replace('/dashboard');
+        } else {
+          alert('Failed to create comment');
+        }
+      }
+    };
+    
+    const delButtonComment = async (event) => {
+      if (event.target.hasAttribute('btn-danger')) {
+        const id = event.target.getAttribute('btn-danger');
+    
+        const response = await fetch(`/api/comments/${id}`, {
+          method: 'DELETE',
+        });
+    
+        if (response.ok) {
+          document.location.replace('/dashboard');
+        } else {
+          alert('Failed to delete comment');
+        }
+      }
+    };
